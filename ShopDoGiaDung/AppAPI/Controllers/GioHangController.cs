@@ -34,15 +34,21 @@ namespace AppAPI.Controllers
         }
 
         // PUT api/<GioHangController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("update-giohang")]
+        public bool Put(Guid idnguoidung, bool trangthai)
         {
+            var giohang = irepos.GetAll().First(p => p.IDNguoiDung == idnguoidung);
+            giohang.TrangThai = trangthai;
+            return irepos.UpdateItem(giohang);
         }
 
         // DELETE api/<GioHangController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("delete-giohang")]
+        public bool
+            Delete(Guid idnguoidung)
         {
+            var giohang = irepos.GetAll().First(p => p.IDNguoiDung == idnguoidung);
+            return irepos.DeleteItem(giohang);
         }
     }
 }
