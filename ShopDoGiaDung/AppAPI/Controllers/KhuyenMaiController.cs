@@ -37,9 +37,9 @@ namespace AppAPI.Controllers
         // PUT api/<KhuyenMaiController>/5
         [HttpPut]
         [Route("edit-khuyenmai")]
-        public bool Put(Guid id, int phantramduocgiam, bool trangthai)
+        public bool Put(Guid idhoadon, int phantramduocgiam, bool trangthai)
         {
-            KhuyenMai khuyenmai = irepos.GetAll().First(p => p.ID == id);
+            KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
        
             khuyenmai.PhanTramDuocGiam = phantramduocgiam;
             khuyenmai.TrangThai = trangthai;
@@ -48,9 +48,9 @@ namespace AppAPI.Controllers
 
         // DELETE api/<KhuyenMaiController>/5
         [HttpDelete("{id}")]
-        public bool Delete(Guid id)
+        public bool Delete(Guid idhoadon)
         {
-            KhuyenMai khuyenmai = irepos.GetAll().First(p => p.ID == id);
+            KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
             return irepos.DeleteItem(khuyenmai);
         }
     }
