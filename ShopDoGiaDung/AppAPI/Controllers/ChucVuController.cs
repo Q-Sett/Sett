@@ -36,15 +36,23 @@ namespace AppAPI.Controllers
         }
 
         // PUT api/<ChucVuController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("update-chucvu")]
+        public bool Put(Guid id, string ten, string mota, bool trangthai)
         {
+            ChucVu chucVu = irepos.GetAll().First(p => p.ID == id);
+            chucVu.Ten = ten;
+            chucVu.MoTa = mota;
+            chucVu.TrangThai = trangthai;
+            return irepos.UpdateItem(chucVu);
         }
 
         // DELETE api/<ChucVuController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("delete-chucvu")]
+        public bool Delete(Guid id)
         {
+            ChucVu chucVu = irepos.GetAll().First(p => p.ID == id);
+            return irepos.DeleteItem(chucVu);
         }
+
     }
 }

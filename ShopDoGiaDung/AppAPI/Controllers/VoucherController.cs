@@ -25,9 +25,10 @@ namespace AppAPI.Controllers
         }
         // POST api/<VoucherController>
         [HttpPost("create-voucher")]
-        public bool CreateVoucher(string tenvoucher, int sotiengiam, DateTime ngayapdung, DateTime ngayketthuc, bool trangthai)
+        public bool CreateVoucher(Guid idsanpham,string tenvoucher, int sotiengiam, DateTime ngayapdung, DateTime ngayketthuc, bool trangthai)
         {
             Voucher voucher = new Voucher();
+            voucher.IDSanPham = idsanpham;
             voucher.TenVocher = tenvoucher;
             voucher.SoTienGiam = sotiengiam;
             voucher.NgayApDung = ngayapdung;
@@ -37,15 +38,27 @@ namespace AppAPI.Controllers
         }
 
         // PUT api/<VoucherController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Route ("edit-voucher")]
+        public bool UpdateVoucher(Guid idsanpham,string tenvoucher, int sotiengiam, DateTime ngayapdung, DateTime ngayketthuc, bool trangthai)
         {
+            Voucher voucher = irepos.GetAll().First(p => p.IDSanPham == idsanpham);
+            voucher.TenVocher = tenvoucher;
+            voucher.SoTienGiam = sotiengiam;
+            voucher.NgayApDung = ngayapdung;
+            voucher.NgayKetThuc = ngayketthuc;
+            voucher.TrangThai = trangthai;
+            return irepos.UpdateItem(voucher);
         }
 
         // DELETE api/<VoucherController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("delete-voucher")]
+        public bool DeleteVoucher(Guid idsanpham)
         {
+            Voucher voucher = irepos.GetAll().First(p => p.IDSanPham == idsanpham);
+
+            return irepos.DeleteItem(voucher);
         }
     }
 }

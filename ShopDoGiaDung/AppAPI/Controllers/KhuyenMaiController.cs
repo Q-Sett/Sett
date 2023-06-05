@@ -35,15 +35,23 @@ namespace AppAPI.Controllers
         }
 
         // PUT api/<KhuyenMaiController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        [Route("edit-khuyenmai")]
+        public bool Put(Guid idhoadon, int phantramduocgiam, bool trangthai)
         {
+            KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
+       
+            khuyenmai.PhanTramDuocGiam = phantramduocgiam;
+            khuyenmai.TrangThai = trangthai;
+            return irepos.UpdateItem(khuyenmai);
         }
 
         // DELETE api/<KhuyenMaiController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public bool Delete(Guid idhoadon)
         {
+            KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
+            return irepos.DeleteItem(khuyenmai);
         }
     }
 }
