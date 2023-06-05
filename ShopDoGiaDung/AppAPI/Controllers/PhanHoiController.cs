@@ -24,7 +24,7 @@ namespace AppAPI.Controllers
             return irepos.GetAll();
         }
         // POST api/<PhanHoiController>
-        [HttpPost]
+        [HttpPost("create-phanhoi")]
         public bool CreatePhanHoi(Guid idnguoidung, Guid idsanpham, string noidungphanhoi, string loaiphanhoi, bool trangthai)
         {
             PhanHoi phanHoi = new PhanHoi();

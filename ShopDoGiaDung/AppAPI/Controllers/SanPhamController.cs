@@ -23,10 +23,12 @@ namespace AppAPI.Controllers
         {
             return irepos.GetAll();
         }
-        [HttpPost]
-        public bool CreateSanPHam(string ten, string anh, string nhacungcap, DateTime nsx, double giaban, int soluongton, string mota, string danhmuc, bool trangthai)
+        // POST api/<SanPhamController>
+        [HttpPost("create-sanpham")]
+        public bool CreateSanPham(Guid iddanhmucsanpham, string ten, string anh, string nhacungcap, DateTime nsx, double giaban, long soluongton, string mota, string danhmuc, bool trangthai)
         {
             SanPham sanPham = new SanPham();
+            sanPham.IDDanhMucSanPham = iddanhmucsanpham; 
             sanPham.Ten = ten;
             sanPham.Anh = anh;
             sanPham.NhaCungCap = nhacungcap;

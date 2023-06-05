@@ -18,7 +18,7 @@ namespace ShopDoGiaDung.Configurations
             builder.Property(p => p.MoTa).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(p => p.DanhMuc).HasColumnType("nvarchar(100)").IsRequired();
             builder.Property(p => p.TrangThai).HasColumnType("int").IsRequired();
-            builder.HasOne(p => p.danhMucSanPhams).WithMany(q => q.sanPhams).HasForeignKey(p => p.ID);
+            builder.HasOne(p => p.danhMucSanPhams).WithMany(q => q.sanPhams).HasForeignKey(p => p.IDDanhMucSanPham);
             builder.HasMany(p => p.vouchers).WithMany(q => q.sanPhams);
         }
     }

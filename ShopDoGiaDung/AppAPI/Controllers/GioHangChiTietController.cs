@@ -24,7 +24,7 @@ namespace AppAPI.Controllers
             return irepos.GetAll();
         }
         // POST api/<GioHangChiTietController>
-        [HttpPost]
+        [HttpPost("create-gihangchitiet")]
         public bool CreateGioHangChiTiet(Guid idsanpham, Guid idnguoidung, Guid idgiohang, int soluong, double thanhtien)
         {
             GioHangChiTIet gioHangChiTIet = new GioHangChiTIet();

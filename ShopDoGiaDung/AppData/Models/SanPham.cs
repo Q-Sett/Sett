@@ -3,11 +3,12 @@
     public class SanPham
     {
         public Guid ID { get; set; }
+        public Guid IDDanhMucSanPham { get; set; }
         public string Ten { get; set; }
         public string Anh { get; set; }
         public string NhaCungCap { get; set; }
         public DateTime NSX { get; set; }
-        public Double GiaBan { get; set; }
+        public double GiaBan { get; set; }
         public long SoLuongTon { get; set; }
         public string MoTa { get; set; }
         public string DanhMuc { get; set; }

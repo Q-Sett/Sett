@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ShopDoGiaDung.Migrations
+namespace AppData.Migrations
 {
     public partial class ShopDoGiaDung : Migration
     {
@@ -28,7 +28,6 @@ namespace ShopDoGiaDung.Migrations
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IDSanPham = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IDVoucher = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ThuocTinh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MoTa = table.Column<string>(type: "nvarchar(500)", nullable: false),
@@ -112,6 +111,7 @@ namespace ShopDoGiaDung.Migrations
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IDDanhMucSanPham = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ten = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     Anh = table.Column<string>(type: "varchar(200)", nullable: false),
                     NhaCungCap = table.Column<string>(type: "nvarchar(100)", nullable: false),
@@ -126,8 +126,8 @@ namespace ShopDoGiaDung.Migrations
                 {
                     table.PrimaryKey("PK_sanPhams", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_sanPhams_danhMucSanPhams_ID",
-                        column: x => x.ID,
+                        name: "FK_sanPhams_danhMucSanPhams_IDDanhMucSanPham",
+                        column: x => x.IDDanhMucSanPham,
                         principalTable: "danhMucSanPhams",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -335,6 +335,11 @@ namespace ShopDoGiaDung.Migrations
                 name: "IX_phanHois_IDSanPham",
                 table: "phanHois",
                 column: "IDSanPham");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_sanPhams_IDDanhMucSanPham",
+                table: "sanPhams",
+                column: "IDDanhMucSanPham");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SanPhamVoucher_vouchersID",

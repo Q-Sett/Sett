@@ -8,7 +8,7 @@ using ShopDoGiaDung.Models;
 
 #nullable disable
 
-namespace ShopDoGiaDung.Migrations
+namespace AppData.Migrations
 {
     [DbContext(typeof(ShoppingDBContext))]
     partial class ShoppingDBContextModelSnapshot : ModelSnapshot
@@ -78,9 +78,6 @@ namespace ShopDoGiaDung.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("IDSanPham")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IDVoucher")
@@ -294,6 +291,7 @@ namespace ShopDoGiaDung.Migrations
             modelBuilder.Entity("ShopDoGiaDung.Models.SanPham", b =>
                 {
                     b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Anh")
@@ -306,6 +304,9 @@ namespace ShopDoGiaDung.Migrations
 
                     b.Property<double>("GiaBan")
                         .HasColumnType("float");
+
+                    b.Property<Guid>("IDDanhMucSanPham")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("MoTa")
                         .IsRequired()
@@ -329,6 +330,8 @@ namespace ShopDoGiaDung.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("IDDanhMucSanPham");
 
                     b.ToTable("sanPhams");
                 });
@@ -484,7 +487,7 @@ namespace ShopDoGiaDung.Migrations
                 {
                     b.HasOne("ShopDoGiaDung.Models.DanhMucSanPham", "danhMucSanPhams")
                         .WithMany("sanPhams")
-                        .HasForeignKey("ID")
+                        .HasForeignKey("IDDanhMucSanPham")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
