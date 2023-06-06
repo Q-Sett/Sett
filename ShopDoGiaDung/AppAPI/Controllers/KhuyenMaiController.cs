@@ -28,30 +28,29 @@ namespace AppAPI.Controllers
         public bool CreateKhuyenMai(Guid idhoadon, int phantramduocgiam, bool trangthai)
         {
             KhuyenMai khuyenMai = new KhuyenMai();
-            khuyenMai.IDHoaDon = idhoadon;
             khuyenMai.PhanTramDuocGiam = phantramduocgiam;
             khuyenMai.TrangThai = trangthai;
             return irepos.CreateItem(khuyenMai);
         }
 
         // PUT api/<KhuyenMaiController>/5
-        [HttpPut]
-        [Route("edit-khuyenmai")]
-        public bool Put(Guid idhoadon, int phantramduocgiam, bool trangthai)
-        {
-            KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
+        //[HttpPut]
+        //[Route("edit-khuyenmai")]
+        //public bool Put(Guid idhoadon, int phantramduocgiam, bool trangthai)
+        //{
+        //    KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
        
-            khuyenmai.PhanTramDuocGiam = phantramduocgiam;
-            khuyenmai.TrangThai = trangthai;
-            return irepos.UpdateItem(khuyenmai);
-        }
+        //    khuyenmai.PhanTramDuocGiam = phantramduocgiam;
+        //    khuyenmai.TrangThai = trangthai;
+        //    return irepos.UpdateItem(khuyenmai);
+        //}
 
         // DELETE api/<KhuyenMaiController>/5
-        [HttpDelete("{id}")]
-        public bool Delete(Guid idhoadon)
-        {
-            KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
-            return irepos.DeleteItem(khuyenmai);
-        }
+        //[HttpDelete("{id}")]
+        //public bool Delete(Guid idhoadon)
+        //{
+        //    KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
+        //    return irepos.DeleteItem(khuyenmai);
+        //}
     }
 }

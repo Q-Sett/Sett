@@ -4,6 +4,7 @@
     {
         public Guid ID { get; set; }
         public Guid IDNguoiDung { get; set; }
+        public Guid IDKhuyenMai { get; set; }
         public DateTime NgayTao { get; set; }
         public DateTime NgayThanhToan { get; set; }
         public bool TrangThai { get; set; }

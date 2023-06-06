@@ -29,7 +29,6 @@ namespace AppAPI.Controllers
         {
             GioHangChiTIet gioHangChiTIet = new GioHangChiTIet();
             gioHangChiTIet.IDSanPham = idsanpham;
-            gioHangChiTIet.IDNguoiDung = idnguoidung;
             gioHangChiTIet.IDGioHang = idgiohang;
             gioHangChiTIet.SoLuong = soluong;
             gioHangChiTIet.ThanhTien = thanhtien;
@@ -42,7 +41,6 @@ namespace AppAPI.Controllers
         {
 
             var gioHangChiTIet = irepos.GetAll().First(p => p.IDSanPham == idsanpham);
-            gioHangChiTIet.IDNguoiDung = idnguoidung;
             gioHangChiTIet.IDGioHang = idgiohang;
             gioHangChiTIet.SoLuong = soluong;
             gioHangChiTIet.ThanhTien = thanhtien;

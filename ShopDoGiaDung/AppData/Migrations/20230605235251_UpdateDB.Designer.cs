@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopDoGiaDung.Models;
 
@@ -11,9 +12,10 @@ using ShopDoGiaDung.Models;
 namespace AppData.Migrations
 {
     [DbContext(typeof(ShoppingDBContext))]
-    partial class ShoppingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230605235251_UpdateDB")]
+    partial class UpdateDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -143,7 +145,6 @@ namespace AppData.Migrations
             modelBuilder.Entity("ShopDoGiaDung.Models.HoaDon", b =>
                 {
                     b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IDKhuyenMai")
@@ -162,8 +163,6 @@ namespace AppData.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("IDKhuyenMai");
 
                     b.HasIndex("IDNguoiDung");
 
@@ -419,7 +418,7 @@ namespace AppData.Migrations
                 {
                     b.HasOne("ShopDoGiaDung.Models.KhuyenMai", "khuyenMais")
                         .WithMany("hoaDons")
-                        .HasForeignKey("IDKhuyenMai")
+                        .HasForeignKey("ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

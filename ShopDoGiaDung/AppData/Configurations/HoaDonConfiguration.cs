@@ -12,7 +12,7 @@ namespace ShopDoGiaDung.Configurations
             builder.Property(p => p.NgayTao).HasColumnType("datetime").IsRequired();
             builder.Property(p => p.NgayThanhToan).HasColumnType("datetime").IsRequired();
             builder.HasOne(p => p.nguoiDungs).WithMany(q => q.hoaDons).HasForeignKey(p => p.IDNguoiDung);
-            builder.HasOne(p => p.khuyenMais).WithMany(q => q.hoaDons).HasForeignKey(p => p.ID);
+            builder.HasOne(p => p.khuyenMais).WithMany(q => q.hoaDons).HasForeignKey(p => p.IDKhuyenMai);
         }
     }
 }

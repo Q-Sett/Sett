@@ -190,7 +190,6 @@ namespace AppData.Migrations
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IDSanPham = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IDNguoiDung = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IDGioHang = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SoLuong = table.Column<int>(type: "int", nullable: false),
                     ThanhTien = table.Column<double>(type: "float", nullable: false)

@@ -4,6 +4,7 @@
     {
         public Guid ID { get; set; }
         public Guid IDDanhMucSanPham { get; set; }
+        public Guid IDVoucher { get; set; }
         public string Ten { get; set; }
         public string Anh { get; set; }
         public string NhaCungCap { get; set; }

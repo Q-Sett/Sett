@@ -12,7 +12,7 @@ using ShopDoGiaDung.Models;
 namespace AppData.Migrations
 {
     [DbContext(typeof(ShoppingDBContext))]
-    [Migration("20230601080630_ShopDoGiaDung")]
+    [Migration("20230605233621_ShopDoGiaDung")]
     partial class ShopDoGiaDung
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -122,9 +122,6 @@ namespace AppData.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IDGioHang")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("IDNguoiDung")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IDSanPham")

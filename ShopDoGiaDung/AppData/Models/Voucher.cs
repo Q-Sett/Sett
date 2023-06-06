@@ -3,7 +3,6 @@
     public class Voucher
     {
         public Guid ID { get; set; }
-        public Guid IDSanPham { get; set; }
         public string TenVocher { get; set; }
         public double SoTienGiam { get; set; }
         public DateTime NgayApDung { get; set; }
