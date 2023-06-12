@@ -9,7 +9,7 @@ namespace ShopDoGiaDung.Configurations
         public void Configure(EntityTypeBuilder<Voucher> builder)
         {
             builder.HasKey(p => p.ID);
-            builder.Property(p => p.SoTienGiam).HasColumnType("int").IsRequired();
+            builder.Property(p => p.SoTienGiam).HasColumnType("float").IsRequired();
             builder.Property(p => p.NgayApDung).HasColumnType("datetime").IsRequired();
             builder.Property(p => p.NgayKetThuc).HasColumnType("datetime").IsRequired();
             builder.Property(p => p.TrangThai).HasColumnType("int").IsRequired();

@@ -25,7 +25,7 @@ namespace AppAPI.Controllers
         }
         // POST api/<VoucherController>
         [HttpPost("create-voucher")]
-        public bool CreateVoucher(Guid idsanpham,string tenvoucher, int sotiengiam, DateTime ngayapdung, DateTime ngayketthuc, bool trangthai)
+        public bool CreateVoucher(string tenvoucher, double sotiengiam, DateTime ngayapdung, DateTime ngayketthuc, bool trangthai)
         {
             Voucher voucher = new Voucher();
             voucher.TenVocher = tenvoucher;
