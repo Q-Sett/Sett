@@ -20,7 +20,7 @@ namespace ShopDoGiaDung.Models
         public DbSet<Voucher> vouchers { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=OH\\SQLEXPRESS;Initial Catalog=ShopDoGiaDung;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Server=NGUYENQUANGDUNG\\SQLEXPRESS;Initial Catalog=ShopDoGiaDung;Integrated Security=True");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

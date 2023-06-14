@@ -25,11 +25,12 @@ namespace AppAPI.Controllers
         }
         // POST api/<KhuyenMaiController>
         [HttpPost("create-khuyenmai")]
-        public bool CreateKhuyenMai(Guid idhoadon, int phantramduocgiam, bool trangthai)
+        public bool CreateKhuyenMai( int phantramduocgiam, bool trangthai)
         {
             KhuyenMai khuyenMai = new KhuyenMai();
             khuyenMai.PhanTramDuocGiam = phantramduocgiam;
             khuyenMai.TrangThai = trangthai;
+            khuyenMai.ID = Guid.NewGuid();
             return irepos.CreateItem(khuyenMai);
         }
 

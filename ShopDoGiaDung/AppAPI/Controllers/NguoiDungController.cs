@@ -36,6 +36,7 @@ namespace AppAPI.Controllers
             nguoiDung.TaiKhoan = taikhoan;
             nguoiDung.MatKhau = matkhau;
             nguoiDung.TrangThai = trangthai;
+            nguoiDung.ID = Guid.NewGuid();
             return irepos.CreateItem(nguoiDung);
         }
 

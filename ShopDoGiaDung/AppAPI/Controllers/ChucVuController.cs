@@ -32,6 +32,7 @@ namespace AppAPI.Controllers
             chucVu.Ten = ten;
             chucVu.MoTa = mota;
             chucVu.TrangThai = trangthai;
+            chucVu.ID = Guid.NewGuid();
             return irepos.CreateItem(chucVu);
         }
 

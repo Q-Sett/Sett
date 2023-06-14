@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AppData.Migrations
 {
-    public partial class ShopDoGiaDung : Migration
+    public partial class _123 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,7 +55,6 @@ namespace AppData.Migrations
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IDHoaDon = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PhanTramDuocGiam = table.Column<int>(type: "int", nullable: false),
                     TrangThai = table.Column<int>(type: "int", nullable: false)
                 },
@@ -69,9 +68,8 @@ namespace AppData.Migrations
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IDSanPham = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TenVocher = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SoTienGiam = table.Column<int>(type: "int", nullable: false),
+                    SoTienGiam = table.Column<double>(type: "float", nullable: false),
                     NgayApDung = table.Column<DateTime>(type: "datetime", nullable: false),
                     NgayKetThuc = table.Column<DateTime>(type: "datetime", nullable: false),
                     TrangThai = table.Column<int>(type: "int", nullable: false)
@@ -112,6 +110,7 @@ namespace AppData.Migrations
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IDDanhMucSanPham = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IDVoucher = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ten = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     Anh = table.Column<string>(type: "varchar(200)", nullable: false),
                     NhaCungCap = table.Column<string>(type: "nvarchar(100)", nullable: false),
@@ -163,6 +162,7 @@ namespace AppData.Migrations
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IDNguoiDung = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IDKhuyenMai = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NgayTao = table.Column<DateTime>(type: "datetime", nullable: false),
                     NgayThanhToan = table.Column<DateTime>(type: "datetime", nullable: false),
                     TrangThai = table.Column<bool>(type: "bit", nullable: false)
@@ -171,8 +171,8 @@ namespace AppData.Migrations
                 {
                     table.PrimaryKey("PK_hoaDons", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_hoaDons_khuyenMais_ID",
-                        column: x => x.ID,
+                        name: "FK_hoaDons_khuyenMais_IDKhuyenMai",
+                        column: x => x.IDKhuyenMai,
                         principalTable: "khuyenMais",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -314,6 +314,11 @@ namespace AppData.Migrations
                 name: "IX_hoaDonChiTiets_IDSanPham",
                 table: "hoaDonChiTiets",
                 column: "IDSanPham");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_hoaDons_IDKhuyenMai",
+                table: "hoaDons",
+                column: "IDKhuyenMai");
 
             migrationBuilder.CreateIndex(
                 name: "IX_hoaDons_IDNguoiDung",

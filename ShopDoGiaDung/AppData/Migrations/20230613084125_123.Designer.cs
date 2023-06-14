@@ -12,8 +12,8 @@ using ShopDoGiaDung.Models;
 namespace AppData.Migrations
 {
     [DbContext(typeof(ShoppingDBContext))]
-    [Migration("20230605233621_ShopDoGiaDung")]
-    partial class ShopDoGiaDung
+    [Migration("20230613084125_123")]
+    partial class _123
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -145,6 +145,10 @@ namespace AppData.Migrations
             modelBuilder.Entity("ShopDoGiaDung.Models.HoaDon", b =>
                 {
                     b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("IDKhuyenMai")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IDNguoiDung")
@@ -160,6 +164,8 @@ namespace AppData.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("IDKhuyenMai");
 
                     b.HasIndex("IDNguoiDung");
 
@@ -197,9 +203,6 @@ namespace AppData.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("IDHoaDon")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("PhanTramDuocGiam")
@@ -307,6 +310,9 @@ namespace AppData.Migrations
                     b.Property<Guid>("IDDanhMucSanPham")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("IDVoucher")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("MoTa")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
@@ -341,17 +347,14 @@ namespace AppData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IDSanPham")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("NgayApDung")
                         .HasColumnType("datetime");
 
                     b.Property<DateTime>("NgayKetThuc")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("SoTienGiam")
-                        .HasColumnType("int");
+                    b.Property<double>("SoTienGiam")
+                        .HasColumnType("float");
 
                     b.Property<string>("TenVocher")
                         .IsRequired()
@@ -418,7 +421,7 @@ namespace AppData.Migrations
                 {
                     b.HasOne("ShopDoGiaDung.Models.KhuyenMai", "khuyenMais")
                         .WithMany("hoaDons")
-                        .HasForeignKey("ID")
+                        .HasForeignKey("IDKhuyenMai")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -1,6 +1,7 @@
 ﻿using AppData.IRepositories;
 using AppData.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ShopDoGiaDung.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,25 +14,37 @@ namespace AppAPI.Controllers
     {
         private readonly IAllRepositories<HoaDon> irepos;
         ShoppingDBContext context = new ShoppingDBContext();
+        DbSet<HoaDon> hoaDons;
         public HoaDonController()
         {
-            irepos = new AllRepositories<HoaDon>(context, context.hoaDons);
+            hoaDons = context.hoaDons;
+            // irepos = new AllRepositories<HoaDon>(context, context.hoaDons);
+            AllRepositories<HoaDon> all = new AllRepositories<HoaDon>(context, hoaDons);
+            irepos = all;
         }
         // GET: api/<HoaDonController>
+      
         [HttpGet]
-        public IEnumerable<HoaDon> GetAllHoaDon()
+        public List<HoaDon> GetAllHoaDon()
         {
-            return irepos.GetAll();
+            return irepos.GetAll().ToList();
+        }
+        [HttpGet("{id}")]
+        public HoaDon? Get(Guid id)
+        {
+            return irepos.GetAll().FirstOrDefault(x => x.ID == id);
         }
         // POST api/<HoaDonController>
         [HttpPost("create-hoadon")]
-        public bool CreateHoaDon(Guid idnguoidung, DateTime ngaytao, DateTime ngaythanhtoan, bool trangthai)
+        public bool CreateHoaDon(Guid idnguoidung,Guid idkhuyenmai , DateTime ngaytao, DateTime ngaythanhtoan, bool trangthai)
         {
             HoaDon hoaDon = new HoaDon();
             hoaDon.IDNguoiDung = idnguoidung;
+            hoaDon.IDKhuyenMai = idkhuyenmai;
             hoaDon.NgayTao = ngaytao;
             hoaDon.NgayThanhToan = ngaythanhtoan;
             hoaDon.TrangThai = trangthai;
+            hoaDon.ID = Guid.NewGuid();
             return irepos.CreateItem(hoaDon);
         }
 
