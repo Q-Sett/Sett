@@ -33,30 +33,30 @@ namespace AppAPI.Controllers
             voucher.NgayApDung = ngayapdung;
             voucher.NgayKetThuc = ngayketthuc;
             voucher.TrangThai = trangthai;
+            voucher.ID = Guid.NewGuid();
             return irepos.CreateItem(voucher);
         }
 
-        // PUT api/<VoucherController>/5
+        // PUT api/<PhanHoiController>/5
         [HttpPut]
-        [Route ("edit-voucher")]
-        //public bool UpdateVoucher(Guid idsanpham,string tenvoucher, int sotiengiam, DateTime ngayapdung, DateTime ngayketthuc, bool trangthai)
-        //{
-        //    Voucher voucher = irepos.GetAll().First(p => p.IDSanPham == idsanpham);
-        //    voucher.TenVocher = tenvoucher;
-        //    voucher.SoTienGiam = sotiengiam;
-        //    voucher.NgayApDung = ngayapdung;
-        //    voucher.NgayKetThuc = ngayketthuc;
-        //    voucher.TrangThai = trangthai;
-        //    return irepos.UpdateItem(voucher);
-        //}
-
-        // DELETE api/<VoucherController>/5
-        [HttpDelete]
-        [Route("delete-voucher")]
-        public void DeleteVoucher(Guid idsanpham)
+        [Route("edit-voucher")]
+        public bool UpdateVoucher(Guid id,string tenvoucher, double sotiengiam, DateTime ngayapdung, DateTime ngayketthuc, bool trangthai)
         {
-            //Voucher voucher = irepos.GetAll().First(p => p.IDSanPham == idsanpham);
-            //return irepos.DeleteItem(voucher);
+            Voucher voucher = irepos.GetAll().First(p => p.ID == id);
+            voucher.TenVocher = tenvoucher;
+            voucher.SoTienGiam = sotiengiam;
+            voucher.NgayApDung = ngayapdung;
+            voucher.NgayKetThuc = ngayketthuc;
+            voucher.TrangThai = trangthai;
+            return irepos.UpdateItem(voucher);
+        }
+
+        // DELETE api/<PhanHoiController>/5
+        [HttpDelete("{id}")]
+        public bool Delete(Guid id)
+        {
+            Voucher voucher = irepos.GetAll().First(p => p.ID == id);
+            return irepos.DeleteItem(voucher);
         }
     }
 }

@@ -28,10 +28,12 @@ namespace AppAPI.Controllers
         public bool CreateHoaDonChiTiet(Guid idhoadon, Guid idsanpham, double gia, int soluong)
         {
             HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+            
             hoaDonChiTiet.IDHoaDon = idhoadon;
             hoaDonChiTiet.IDSanPham = idsanpham;
             hoaDonChiTiet.Gia = gia;
             hoaDonChiTiet.SoLuong = soluong;
+            hoaDonChiTiet.ID = Guid.NewGuid();
             return irepos.CreateItem(hoaDonChiTiet);
         }
 

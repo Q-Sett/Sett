@@ -34,16 +34,17 @@ namespace AppAPI.Controllers
             phanHoi.NoiDungPhanHoi = noidungphanhoi;
             phanHoi.LoaiPhanHoi = loaiphanhoi;
             phanHoi.TrangThai = trangthai;
+            phanHoi.ID = Guid.NewGuid();
             return irepos.CreateItem(phanHoi);
         }
 
         // PUT api/<PhanHoiController>/5
         [HttpPut]
         [Route("edit-phanhoi")]
-        public bool Put(Guid idnguoidung, Guid idsanpham, string noidungphanhoi, string loaiphanhoi, bool trangthai)
+        public bool Put(Guid id,Guid idnguoidung, Guid idsanpham, string noidungphanhoi, string loaiphanhoi, bool trangthai)
         {
-            PhanHoi phanHoi = irepos.GetAll().First(p => p.IDNguoiDung == idnguoidung);
-           // phanHoi.IDNguoiDung = idnguoidung;
+            PhanHoi phanHoi = irepos.GetAll().First(p => p.ID == id);
+            phanHoi.IDNguoiDung = idnguoidung;
             phanHoi.IDSanPham = idsanpham;
             phanHoi.NoiDungPhanHoi = noidungphanhoi;
             phanHoi.LoaiPhanHoi = loaiphanhoi;

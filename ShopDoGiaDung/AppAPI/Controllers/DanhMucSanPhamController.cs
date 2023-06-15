@@ -25,12 +25,14 @@ namespace AppAPI.Controllers
         }
         // POST api/<DanhMucSanPhamController>
         [HttpPost("create-danhmucsanpham")]
-        public bool CreateDanhMucSanPham(string thuoctinh, string mota, bool trangthai)
+        public bool CreateDanhMucSanPham(Guid idvoucher,string thuoctinh, string mota, bool trangthai)
         {
             DanhMucSanPham danhMucSanPham = new DanhMucSanPham();
+            danhMucSanPham.IDVoucher = idvoucher;
             danhMucSanPham.ThuocTinh = thuoctinh;
             danhMucSanPham.MoTa = mota;
             danhMucSanPham.TrangThai = trangthai;
+            danhMucSanPham.ID = Guid.NewGuid();
             return irepos.CreateItem(danhMucSanPham);
         }
 

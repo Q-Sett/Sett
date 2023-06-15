@@ -30,6 +30,7 @@ namespace AppAPI.Controllers
             Giohang giohang = new Giohang();
             giohang.IDNguoiDung = idnguoidung;
             giohang.TrangThai = trangthai;
+            
             return irepos.CreateItem(giohang);
         }
 

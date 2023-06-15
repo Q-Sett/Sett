@@ -34,24 +34,22 @@ namespace AppAPI.Controllers
             return irepos.CreateItem(khuyenMai);
         }
 
-        // PUT api/<KhuyenMaiController>/5
-        //[HttpPut]
-        //[Route("edit-khuyenmai")]
-        //public bool Put(Guid idhoadon, int phantramduocgiam, bool trangthai)
-        //{
-        //    KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
-       
-        //    khuyenmai.PhanTramDuocGiam = phantramduocgiam;
-        //    khuyenmai.TrangThai = trangthai;
-        //    return irepos.UpdateItem(khuyenmai);
-        //}
+        [HttpPut]
+        [Route("edit-khuyenmai")]
+        public bool UpdateKhuyenMai(Guid id ,int phantramduocgiam, bool trangthai)
+        {
+            KhuyenMai khuyenmai = irepos.GetAll().First(p => p.ID == id );
+            khuyenmai.PhanTramDuocGiam = phantramduocgiam;
+            khuyenmai.TrangThai = trangthai;
+            return irepos.UpdateItem(khuyenmai);
+        }
 
-        // DELETE api/<KhuyenMaiController>/5
-        //[HttpDelete("{id}")]
-        //public bool Delete(Guid idhoadon)
-        //{
-        //    KhuyenMai khuyenmai = irepos.GetAll().First(p => p.IDHoaDon == idhoadon);
-        //    return irepos.DeleteItem(khuyenmai);
-        //}
+        // DELETE api/<PhanHoiController>/5
+        [HttpDelete("{id}")]
+        public bool Delete(Guid id)
+        {
+            KhuyenMai khuyenmai = irepos.GetAll().First(x=> x.ID == id);
+            return irepos.DeleteItem(khuyenmai);
+        }
     }
 }

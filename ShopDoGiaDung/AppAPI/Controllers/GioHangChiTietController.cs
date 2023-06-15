@@ -25,13 +25,14 @@ namespace AppAPI.Controllers
         }
         // POST api/<GioHangChiTietController>
         [HttpPost("create-gihangchitiet")]
-        public bool CreateGioHangChiTiet(Guid idsanpham, Guid idnguoidung, Guid idgiohang, int soluong, double thanhtien)
+        public bool CreateGioHangChiTiet(Guid idsanpham, Guid idgiohang,  int soluong, double thanhtien)
         {
             GioHangChiTIet gioHangChiTIet = new GioHangChiTIet();
             gioHangChiTIet.IDSanPham = idsanpham;
             gioHangChiTIet.IDGioHang = idgiohang;
             gioHangChiTIet.SoLuong = soluong;
             gioHangChiTIet.ThanhTien = thanhtien;
+            gioHangChiTIet.ID = Guid.NewGuid();
             return irepos.CreateItem(gioHangChiTIet);
         }
 

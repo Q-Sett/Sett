@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ShopDoGiaDung.Models.PhanHoi>
+
+@{
+    ViewData["Title"] = "GetAllPhanHoi";
+}
+
+<h1>GetAllPhanHoi</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>*@
+         @*   <th>
+                @Html.DisplayNameFor(model => model.IDNguoiDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IDSanPham)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.NoiDungPhanHoi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoaiPhanHoi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>*@
+           @* <td>
+                @Html.DisplayFor(modelItem => item.IDNguoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDSanPham)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungPhanHoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiPhanHoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID}) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

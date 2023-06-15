@@ -1,0 +1,73 @@
+﻿
+@*@{
+    List<SanPham> lstPro = ViewBag.lstPro;
+
+
+}*@
+
+@*@inject IHttpContextAccessor http
+@{
+    ViewData["Title"] = "Home Page";
+    string ten = http.HttpContext.Session.GetString("username");
+    string chucvu = http.HttpContext.Session.GetString("role");
+}*@
+@*<p>Name:@ten</p>
+<p>chucvu: @chucvu</p>*@
+<div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="https://www.kiotviet.vn/wp-content/uploads/2022/04/Ly-0604-2.png" alt="Banner Landingpage 4378" width="1200" height="220" title="Banner Landingpage 4378"
+             class="d-block w-100"
+             alt="..."
+             width="100%"
+             height="100%" />
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+        <div class="iq-card-header d-flex justify-content-between align-items-center position-relative">
+            <div class="iq-header-title">
+                <h4 class="card-title mb-0">Gợi ý cho bạn các sản phẩm do người đẹp choai chọn lựa </h4>
+            </div>
+        </div>
+        <div class="iq-card-body">
+            <div class="row"> 
+                
+               @* @if (lstPro != null && lstPro.Any())
+                { hien san pham create ra 
+                    @foreach (var item in lstPro)
+                    {
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="iq-card iq-card-block iq-card-stretch iq-card-height browse-bookcontent">
+                                <div class="iq-card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="col-6 p-0 position-relative image-overlap-shadow">
+                                            @if (item != null && !string.IsNullOrEmpty(item.Anh))
+                                            {
+                                                <a><img class="img-fluid rounded w-100" height="200" src="/images/@item.Anh" alt=""></a>
+                                            }
+                                            <div class="view-book">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            @if (item != null)
+                                            {
+                                                <div class="mb-2">
+                                                    <a href='@Url.Action("ChiTietSP", "SanPhams", new {id = item.Id})'><h6 class="mb-1">@(item.TenSp)</h6></a>
+                                                    <p class="font-size-13 line-height mb-1">@(item.MoTa)</p>
+                                                </div>
+                                                <div class="price d-flex align-items-center">
+                                                    <h6><b>@(item.GiaBan)</b> VND</h6>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                }*@
+            </div>
+        </div>
+    </div>
+</div>
